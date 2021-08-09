@@ -20,6 +20,9 @@ function valuetext(value) {
 function Cards(props) {
   return (
     <>
+      <Typography className="primary" variant="h4" component="h2">
+        Welcome User!
+      </Typography>
       <div className="cards">
         <Card className="single-card" variant="outlined">
           <CardContent className="card-content">
@@ -54,7 +57,7 @@ function Cards(props) {
               Manually control the music quality in event of poor connection
             </Typography>
             <FormControl>
-              <InputLabel id="demo-simple-select-label">Normal</InputLabel>
+              <InputLabel id="demo-simple-select-label">{props.soundQuality}</InputLabel>
               <Select className="select" onChange={e => props.setSoundQuality(e.target.value)} labelId="demo-simple-select-label" id="demo-simple-select">
                 <MenuItem value={"High"}>High</MenuItem>
                 <MenuItem value={"Normal"}>Normal</MenuItem>

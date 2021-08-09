@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 
 import Form from "../form/Form"
 import Cards from "../cards/Cards"
+import Notifications from "../notifications/Notifications"
 
 function Dashboard() {
   const [loginStatus, setLoginStatus] = useState(false)
@@ -29,7 +30,18 @@ function Dashboard() {
     console.log(soundQuality)
   }, [soundQuality])
 
-  return <>{loginStatus ? <Cards setOnlineMode={setOnlineMode} toggleOnlineMode={toggleOnlineMode} setUserVolume={setUserVolume} setSoundQuality={setSoundQuality} /> : <Form setLoginStatus={setLoginStatus} />}</>
+  return (
+    <>
+      {loginStatus ? (
+        <>
+          <Cards setOnlineMode={setOnlineMode} toggleOnlineMode={toggleOnlineMode} setUserVolume={setUserVolume} soundQuality={soundQuality} setSoundQuality={setSoundQuality} />
+          <Notifications onlineMode={onlineMode} userVolume={userVolume} soundQuality={soundQuality} />
+        </>
+      ) : (
+        <Form setLoginStatus={setLoginStatus} />
+      )}
+    </>
+  )
 }
 
 export default Dashboard
